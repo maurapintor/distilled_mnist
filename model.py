@@ -1,3 +1,6 @@
+from torch import nn
+import torch
+
 class MNISTModel(nn.Module):
     def __init__(self):
         super().__init__()
@@ -37,14 +40,3 @@ class MNISTModel(nn.Module):
 
         return self.linear3(x)
 
-def load_model(weigths_url: str):
-    model = MNISTModel()
-    path = Path("models/mnist_distilled.pt")
-    if not path.exists():
-        download_gdrive(MODEL_ID, path)
-    state_dict = torch.load(
-        path, map_location=torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    )
-    model.load_state_dict(state_dict)
-    model.eval()
-    return model
