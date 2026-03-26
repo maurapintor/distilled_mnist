@@ -19,14 +19,21 @@ Input: `1×28×28` grayscale image — Output: 10-class logits.
 ```python
 import torch
 
-model = torch.hub.load("maurapintor/distilled_mnist", "mnist_model", student=True)
+model = torch.hub.load("maurapintor/distilled_mnist", "mnist_model", weights="student")
 model.eval()
 ```
 
 ### Load the teacher model
 
 ```python
-model = torch.hub.load("maurapintor/distilled_mnist", "mnist_model", student=False)
+model = torch.hub.load("maurapintor/distilled_mnist", "mnist_model", weights="teacher")
+model.eval()
+```
+
+### Load the untrained model
+
+```python
+model = torch.hub.load("maurapintor/distilled_mnist", "mnist_model")
 model.eval()
 ```
 
