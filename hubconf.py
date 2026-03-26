@@ -1,7 +1,7 @@
 dependencies = ['torch']
 
 
-def mnist_model(student: Bool = True):
+def mnist_model(student: bool = True):
     from model import MNISTModel
     model = MNISTModel()
     if student:
