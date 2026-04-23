@@ -1,6 +1,6 @@
-# Distilled MNISTNet
+# MNIST Examples
 
-A neural network trained on MNIST with **defensive distillation** (teacher and student models).
+A collection of neural network models and training strategies for the MNIST dataset. This repository provides multiple examples, including standard and advanced techniques such as defensive distillation.
 
 ## Architecture
 
@@ -14,26 +14,26 @@ Input: `1×28×28` grayscale image — Output: 10-class logits.
 
 ## Usage with Torch Hub
 
-### Load the student (distilled) model
+### Load a pretrained student (defensive distillation) model
 
 ```python
 import torch
 
-model = torch.hub.load("maurapintor/distilled_mnist", "mnist_model", weights="student")
+model = torch.hub.load("maurapintor/mnist_examples", "mnist_model", weights="student")
 model.eval()
 ```
 
-### Load the teacher model
+### Load a pretrained teacher model
 
 ```python
-model = torch.hub.load("maurapintor/distilled_mnist", "mnist_model", weights="teacher")
+model = torch.hub.load("maurapintor/mnist_examples", "mnist_model", weights="teacher")
 model.eval()
 ```
 
-### Load the untrained model
+### Load an untrained model
 
 ```python
-model = torch.hub.load("maurapintor/distilled_mnist", "mnist_model")
+model = torch.hub.load("maurapintor/mnist_examples", "mnist_model")
 model.eval()
 ```
 
@@ -51,10 +51,9 @@ print("Predicted class:", pred)
 
 ## Pretrained Weights
 
-| Model | Checkpoint |
-|-------|-----------|
-| Student (distilled) | `mnist_distilled.pt` |
-| Teacher | `mnist_teacher.pt` |
+| Model                 | Checkpoint           |
+|-----------------------|---------------------|
+| Student (distilled)   | `mnist_distilled.pt`|
+| Teacher               | `mnist_teacher.pt`  |
 
 Weights are downloaded automatically by `torch.hub`.
-
